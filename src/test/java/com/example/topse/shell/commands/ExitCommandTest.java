@@ -17,26 +17,30 @@ public class ExitCommandTest {
     Shell shell = mock(Shell.class);
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception
+    {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws Exception
+    {
     }
 
     @Test
-    public void testHandleExitCommandAndSetFinishedToShell() {
-        boolean isFinished = command.execute(shell, "exit", null);
-
+    public void testHandleExitCommandAndSetFinishedToShell()
+    {
+        boolean isExecuted = command.execute(shell, "exit", null);
         verify(shell).setFinished(true);
-        assertThat(isFinished, is(true));
+
+        assertThat(isExecuted, is(true));
     }
 
     @Test
-    public void testDoesNotHandleOtherCommand() {
-        boolean isFinished = command.execute(shell, "not_exit", null);
+    public void testDoesNotHandleOtherCommand()
+    {
+        boolean isExecuted = command.execute(shell, "not_exit", null);
 
-        assertThat(isFinished, is(false));
+        assertThat(isExecuted, is(false));
     }
 
 }
