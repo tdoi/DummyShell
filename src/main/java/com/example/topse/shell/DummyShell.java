@@ -15,20 +15,20 @@ import com.example.topse.shell.commands.Command;
 import com.example.topse.shell.commands.ExitCommand;
 
 public class DummyShell implements Shell {
-	
+
 	private InputStream inputStream;
 	private PrintStream outputStream;
 	private List<Command> commandList = new LinkedList<Command>();
-	
+
 	private boolean isFinished;
-	
+
 	public DummyShell() {
 		inputStream = System.in;
 		outputStream = System.out;
 
-		commandList.add(new ExitCommand());		
+		commandList.add(new ExitCommand());
 	}
-	
+
 	public void setInputStream(InputStream stream) {
 		this.inputStream = stream;
 	}
@@ -46,7 +46,7 @@ public class DummyShell implements Shell {
 			String[] items = parseCommand(getInput());
 			String command = items[0];
 			String[] args = Arrays.copyOfRange(items, 1, items.length);
-			
+
 			executeCommand(command, args);
 		}
 	}
@@ -88,12 +88,12 @@ public class DummyShell implements Shell {
 		}
 		return line;
 	}
-	
+
 	@Override
 	public void write(String output) {
-		outputStream.println(output);		
+		outputStream.print(output);
 	}
-	
+
 	public String[] parseCommand(String command) {
 		return command.split(" ");
 	}
